@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shop | My Electronics Shop</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Browse used electronics and parts. Small curated stock, rotating frequently." />
+</head>
+<body>
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">My Electronics Shop</a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a class="active" href="shop.html">Shop</a></li>
+          <li><a href="builds.html">Custom Builds</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="site-main">
+    <section class="section">
+      <div class="container">
+        <h1>Shop</h1>
+        <p class="subtle">Small batch, rotating inventory. All items include honest condition notes.</p>
+
+        <!-- Optional simple filters (structure-first; JS not required yet) -->
+        <form class="filters" aria-label="Filters">
+          <div class="filters-row">
+            <label>
+              <span class="label">Search</span>
+              <input type="search" placeholder="e.g. Raspberry Pi, GPU, ThinkPad" />
+            </label>
+            <label>
+              <span class="label">Category</span>
+              <select>
+                <option value="">All</option>
+                <option value="laptops">Laptops</option>
+                <option value="components">Components</option>
+                <option value="sbc">Single-Board Computers</option>
+                <option value="accessories">Accessories</option>
+              </select>
+            </label>
+            <label>
+              <span class="label">Condition</span>
+              <select>
+                <option value="">Any</option>
+                <option value="like-new">Like New</option>
+                <option value="good">Good</option>
+                <option value="fair">Fair</option>
+              </select>
+            </label>
+          </div>
+        </form>
+
+        <!-- Product Grid -->
+        <div class="grid three products">
+          <!-- Example Product Card -->
+          <article class="card product" id="laptops">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <div class="card-body">
+              <h2 class="product-title">ThinkPad X270</h2>
+              <p class="product-meta">i5 • 8GB RAM • 256GB SSD</p>
+              <p class="product-desc">Solid travel laptop. Battery in good health. Minor scuffs on lid.</p>
+              <div class="product-bottom">
+                <span class="price">€220</span>
+                <a class="btn btn-small" href="contact.html">Enquire</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card product" id="components">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <div class="card-body">
+              <h2 class="product-title">GTX 1060 6GB</h2>
+              <p class="product-meta">Refurbished • Cleaned & repasted</p>
+              <p class="product-desc">Great for light gaming or ML tinkering. Runs cool after service.</p>
+              <div class="product-bottom">
+                <span class="price">€90</span>
+                <a class="btn btn-small" href="contact.html">Enquire</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card product" id="sbc">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <div class="card-body">
+              <h2 class="product-title">Raspberry Pi 4 (4GB)</h2>
+              <p class="product-meta">With case & heatsinks</p>
+              <p class="product-desc">Ready for your next IoT gateway or mini-lab setup.</p>
+              <div class="product-bottom">
+                <span class="price">€70</span>
+                <a class="btn btn-small" href="contact.html">Enquire</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Duplicate & edit cards as you add stock -->
+        </div>
+
+        <!-- Store Note -->
+        <div class="store-note">
+          <p><strong>Note:</strong> Stock is updated manually. If an item is gone, I’ll suggest a similar option or add you to a notify list.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 My Electronics Shop</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer-nav">
+          <li><a class="active" href="shop.html">Shop</a></li>
+          <li><a href="builds.html">Custom Builds</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

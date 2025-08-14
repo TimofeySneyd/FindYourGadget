@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Custom Builds | My Electronics Shop</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="description" content="Showcase of custom IoT devices, cyberdecks, and Raspberry Pi projects." />
+</head>
+<body>
+  <!-- Shared Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">My Electronics Shop</a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a class="active" href="builds.html">Custom Builds</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <main class="site-main">
+    <section class="hero">
+      <div class="container">
+        <h1>Custom IoT & Raspberry Pi Builds</h1>
+        <p>Hand-assembled devices with clear documentation and parts lists. Limited runs; request-based builds welcome.</p>
+        <div class="actions">
+          <a class="btn" href="contact.html">Request a Build</a>
+          <a class="btn btn-outline" href="#gallery">See Gallery</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="container">
+        <h2 class="section-title">Featured Builds</h2>
+
+        <div class="grid three">
+          <!-- Build Card 1 -->
+          <article class="card">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <h3>Portable Pi Cyberdeck</h3>
+            <p class="product-meta">Raspberry Pi 4 • 7" display • 3D-printed case</p>
+            <p>Compact field workstation with USB-C power, built-in keyboard, and cooling.</p>
+            <div class="actions">
+              <a class="btn btn-small" href="contact.html">Enquire</a>
+              <a class="btn btn-small btn-outline" href="#bom-cyberdeck">BOM</a>
+            </div>
+          </article>
+
+          <!-- Build Card 2 -->
+          <article class="card" id="iot">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <h3>IoT Sensor Gateway</h3>
+            <p class="product-meta">ESP32 • MQTT • Temp/Humidity/Light</p>
+            <p>Home lab gateway with local logging and optional encrypted remote feed.</p>
+            <div class="actions">
+              <a class="btn btn-small" href="contact.html">Enquire</a>
+              <a class="btn btn-small btn-outline" href="#bom-gateway">BOM</a>
+            </div>
+          </article>
+
+          <!-- Build Card 3 -->
+          <article class="card" id="tools">
+            <div class="thumb placeholder" aria-hidden="true">Image</div>
+            <h3>Pi Network Toolkit</h3>
+            <p class="product-meta">Raspberry Pi • Dual NIC option</p>
+            <p>Portable lab box for testing, capture, and diagnostics with clean UI presets.</p>
+            <div class="actions">
+              <a class="btn btn-small" href="contact.html">Enquire</a>
+              <a class="btn btn-small btn-outline" href="#bom-netkit">BOM</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- BOM Notes / Structure placeholders -->
+        <div class="section alt" id="bom-cyberdeck">
+          <div class="container">
+            <h3>Bill of Materials — Portable Pi Cyberdeck</h3>
+            <ul>
+              <li>Raspberry Pi 4 (4GB or 8GB)</li>
+              <li>7" HDMI display + controller</li>
+              <li>Compact 60% keyboard</li>
+              <li>USB-C PD power module</li>
+              <li>3D-printed enclosure + cooling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section alt" id="bom-gateway">
+          <div class="container">
+            <h3>Bill of Materials — IoT Sensor Gateway</h3>
+            <ul>
+              <li>ESP32 dev board</li>
+              <li>Sensors: DHT22 / BH1750</li>
+              <li>Case + wiring set</li>
+              <li>Optional battery module</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section alt" id="bom-netkit">
+          <div class="container">
+            <h3>Bill of Materials — Pi Network Toolkit</h3>
+            <ul>
+              <li>Raspberry Pi 4</li>
+              <li>MicroSD + case with cooling</li>
+              <li>Optional USB NIC (2nd interface)</li>
+              <li>Portable power bank</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="note">
+          <p><strong>Note:</strong> Lead times vary. Each build ships with a quick-start guide and links to repo/docs.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; 2025 My Electronics Shop</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer-nav">
+          <li><a href="shop.html">Shop</a></li>
+          <li><a class="active" href="builds.html">Custom Builds</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
