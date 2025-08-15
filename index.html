@@ -33,7 +33,7 @@
     <section class="holo-hero" aria-label="Hologram lighthouse simulation">
       <svg class="holo-svg" viewBox="0 0 600 400" role="img" aria-labelledby="holoTitle holoDesc">
         <title id="holoTitle">Hologram Lighthouse</title>
-        <desc id="holoDesc">Neon wireframe lighthouse with rotating beams and scanlines.</desc>
+        <desc id="holoDesc">Neon wireframe lighthouse with 3D radar-like sweeping beams and scanlines.</desc>
 
         <defs>
           <!-- soft glow for neon strokes -->
@@ -46,10 +46,27 @@
           </filter>
         </defs>
 
-        <!-- surrounding ring -->
+        <!-- REAR SWEEP (behind tower) -->
+        <!-- Pivot at lantern center (300,182); rotate inner group 360° -->
+        <g transform="translate(300 182)">
+          <g class="rearSweep" aria-hidden="true">
+            <!-- thinner, dimmer wedge for "behind" -->
+            <polygon class="beam rear" points="0,0  560,-70 560,70" />
+            <polygon class="beam rear" points="0,0 -560,-70 -560,70" />
+            <animateTransform attributeName="transform" type="rotate"
+                              from="0 0 0" to="360 0 0"
+                              dur="8s" repeatCount="indefinite" />
+            <!-- visible only on back half of the orbit -->
+            <animate attributeName="opacity" values="0;0;1;1;0"
+                     keyTimes="0;0.499;0.5;0.999;1"
+                     dur="8s" repeatCount="indefinite" />
+          </g>
+        </g>
+
+        <!-- Ring drawn above the rear sweep so it stays crisp -->
         <circle class="wire ring" cx="300" cy="280" r="160" />
 
-        <!-- lighthouse body -->
+        <!-- LIGHTHOUSE BODY -->
         <g class="lighthouse" filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
           <!-- base hill -->
           <path class="wire" d="M210 330 Q300 300 390 330" />
@@ -66,17 +83,66 @@
           <circle class="wire" cx="300" cy="292" r="6" />
         </g>
 
-        <!-- PERFECT-PIVOT ROTATING BEAMS (lantern center at 300,182) -->
+        <!-- FRONT SWEEP (in front of tower) -->
         <g transform="translate(300 182)">
-          <g class="beams360" aria-hidden="true">
-            <!-- two opposite lighthouse beams -->
-            <polygon class="beam" points="0,0 -640,-90 -640,90" />
-            <polygon class="beam" points="0,0  640,-90  640,90" />
-            <!-- spin the inner group around (0,0) for a true 360° rotation -->
-            <animateTransform attributeName="transform"
-                              type="rotate"
+          <g class="frontSweep" aria-hidden="true">
+            <!-- wider, brighter wedge for the near side -->
+            <polygon class="beam front" points="0,0  640,-110 640,110" />
+            <polygon class="beam front" points="0,0 -640,-110 -640,110" />
+            <animateTransform attributeName="transform" type="rotate"
                               from="0 0 0" to="360 0 0"
-                              dur="7s" repeatCount="indefinite" />
+                              dur="8s" repeatCount="indefinite" />
+            <!-- visible only on front half of the orbit -->
+            <animate attributeName="opacity" values="1;1;0;0;1"
+                     keyTimes="0;0.499;0.5;0.999;1"
+                     dur="8s" repeatCount="indefinite" />
+          </g>
+        </g>
+
+        <!-- RADAR BLIPS on the ring (ping when the sweep passes) -->
+        <g class="blips" transform="translate(300 280)">
+          <!-- place a blip at a given angle by rotating, then translating along radius -->
+          <g transform="rotate(30) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.075;0.083;0.10;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g transform="rotate(90) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.24;0.25;0.27;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g transform="rotate(140) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.37;0.389;0.41;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g transform="rotate(210) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.57;0.583;0.60;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g transform="rotate(260) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.71;0.722;0.74;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+          <g transform="rotate(320) translate(145 0)">
+            <circle class="blip" r="3">
+              <animate attributeName="opacity" values="0;0;1;0;0"
+                       keyTimes="0;0.875;0.889;0.905;1"
+                       dur="8s" repeatCount="indefinite"/>
+            </circle>
           </g>
         </g>
       </svg>
