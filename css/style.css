@@ -131,7 +131,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   background-image:
     /* keeps the title readable on any photo */
     linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("../images/otherHOME.jpg");
+    url("D:\Website Development Tim\images\otherHOME2.jpg");
   background-position: center;      /* crop nicely */
   background-size: cover;           /* fill the frame */
   background-repeat: no-repeat;
