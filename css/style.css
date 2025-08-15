@@ -115,7 +115,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* FULL-WIDTH PAGE BANNERS (with centered title) */
 .page-hero{
   position:relative; width:100%;
-  min-height:clamp(180px,28vh,360px); /* limited vertically, flexible across screens */
+  min-height:clamp(180px,28vh,360px);
   display:grid; place-items:center; color:#fff; text-align:center;
   background-position:center; background-size:cover; background-repeat:no-repeat;
 }
@@ -140,13 +140,20 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 .holo-hero{
   position:relative;
   width:100%;
-  min-height:clamp(320px, 55vh, 560px);
+  /* COMPACT HEIGHT (~2x shorter than before) */
+  min-height:clamp(200px, 28vh, 340px);
   background:#050d06 radial-gradient(ellipse at 50% 70%, rgba(57,255,20,.10), transparent 60%);
   display:grid; place-items:center;
   overflow:hidden;
   contain: paint;
 }
-.holo-svg{ width:100%; height:auto; display:block; }
+.holo-svg{
+  /* Scaled down & centered for symmetry */
+  width:min(800px, 68vw);
+  height:auto;
+  margin-inline:auto;
+  display:block;
+}
 
 /* scanlines */
 .holo-hero::before{
@@ -155,10 +162,10 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   mix-blend-mode:overlay; pointer-events:none;
 }
 
-/* GPU-friendly scanbar */
+/* GPU-friendly scanbar (shorter to match compact hero) */
 .scanbar{
-  position:absolute; left:0; right:0; top:-40%;
-  height:40%;
+  position:absolute; left:0; right:0; top:-30%;
+  height:30%;
   background:linear-gradient(0deg, transparent 0%, rgba(57,255,20,.20) 50%, transparent 100%);
   mix-blend-mode:screen; pointer-events:none;
   transform:translateY(0);
@@ -185,9 +192,9 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 .blip{ fill:var(--holo); opacity:0; filter:drop-shadow(0 0 4px rgba(57,255,20,.85)); }
 .lighthouse{ animation:holoFlicker 4s steps(60) infinite; }
 
-/* Floor grid */
+/* Floor grid (reduced height for compact hero) */
 .grid-floor{
-  position:absolute; inset:auto 0 0 0; height:42%;
+  position:absolute; inset:auto 0 0 0; height:32%;
   background:
     radial-gradient(ellipse at center, rgba(57,255,20,.18), transparent 60%),
     repeating-linear-gradient(to right, rgba(57,255,20,.25) 0 1px, transparent 1px 80px),
@@ -204,7 +211,8 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 @keyframes holoDash{ to{ stroke-dashoffset:-1200; } }
 @keyframes holoPulse{ 0%,100%{ opacity:.9; } 50%{ opacity:1; } }
 @keyframes holoGridPulse{ 0%,100%{ opacity:.65; } 50%{ opacity:.9; } }
-@keyframes scanMove{ to{ transform:translateY(220%); } }
+/* Shorter travel because the hero is shorter */
+@keyframes scanMove{ to{ transform:translateY(190%); } }
 @keyframes holoFlicker{
   0%,100%{ filter:none; }
   12% { filter:brightness(1.04); }
@@ -217,4 +225,10 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 @media (prefers-reduced-motion: reduce){
   .wire,.grid-floor,.scanbar,.lighthouse{ animation:none!important; }
   .rearSweep,.frontSweep,.blips{ display:none !important; }
+}
+
+/* Phone tweaks */
+@media (max-width:600px){
+  .holo-hero{ min-height:clamp(220px, 40vh, 360px); }
+  .holo-svg{ width:92vw; }
 }
