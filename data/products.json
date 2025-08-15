@@ -1,0 +1,82 @@
+[
+  {
+    "id": "thinkpad-x270",
+    "title": "ThinkPad X270",
+    "category": "laptops",
+    "condition": "good",
+    "priceEUR": 220,
+    "specs": "i5 • 8GB RAM • 256GB SSD",
+    "desc": "Solid travel laptop. Battery in good health. Minor scuffs on lid.",
+    "image": "images/x270.jpg"
+  },
+  {
+    "id": "gtx-1060-6gb",
+    "title": "GTX 1060 6GB",
+    "category": "components",
+    "condition": "good",
+    "priceEUR": 90,
+    "specs": "Refurbished • Cleaned & repasted",
+    "desc": "Great for light gaming or ML tinkering. Runs cool after service.",
+    "image": "images/gtx1060.jpg"
+  },
+  {
+    "id": "rpi4-4gb",
+    "title": "Raspberry Pi 4 (4GB)",
+    "category": "sbc",
+    "condition": "like-new",
+    "priceEUR": 70,
+    "specs": "With case & heatsinks",
+    "desc": "Ready for your next IoT gateway or mini-lab setup.",
+    "image": "images/rpi4.jpg"
+  },
+  {
+    "id": "intel-nuc-7i5",
+    "title": "Intel NUC Kit",
+    "category": "components",
+    "condition": "good",
+    "priceEUR": 180,
+    "specs": "i5 • Barebone • M.2 slot",
+    "desc": "Tiny PC for homelab or kiosk projects. Add your RAM/SSD.",
+    "image": "images/nuc.jpg"
+  },
+  {
+    "id": "esp32-kit",
+    "title": "ESP32 Dev Kit",
+    "category": "accessories",
+    "condition": "like-new",
+    "priceEUR": 20,
+    "specs": "Wi-Fi + BLE • USB-C",
+    "desc": "Ideal for IoT prototypes and sensor gateways.",
+    "image": "images/esp32.jpg"
+  },
+  {
+    "id": "latitude-e7470",
+    "title": "Dell Latitude E7470",
+    "category": "laptops",
+    "condition": "fair",
+    "priceEUR": 160,
+    "specs": "i5 • 8GB • 256GB",
+    "desc": "Reliable daily driver. Cosmetic wear on palmrest, fully functional.",
+    "image": "images/e7470.jpg"
+  },
+  {
+    "id": "iphone-11-64",
+    "title": "iPhone 11 (64GB)",
+    "category": "phones",
+    "condition": "good",
+    "priceEUR": 190,
+    "specs": "Unlocked • Good battery health",
+    "desc": "Clean condition with minor wear. Includes charging cable.",
+    "image": "images/iphone11.jpg"
+  },
+  {
+    "id": "galaxy-tab-a8",
+    "title": "Samsung Galaxy Tab A8 (32GB)",
+    "category": "tablets",
+    "condition": "good",
+    "priceEUR": 120,
+    "specs": "10.5\" display • Wi-Fi",
+    "desc": "Great media tablet for travel and home.",
+    "image": "images/tab-a8.jpg"
+  }
+]
