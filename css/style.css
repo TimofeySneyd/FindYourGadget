@@ -126,17 +126,19 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 .banner-about{  background-image:url("../images/aboutbackground.jpg"); }
 .banner-shop{   background-image:url("../images/otherpage1.jpg"); }
 .banner-builds{ background-image:url("../images/otherpage2.jpg"); }
-/* Home banner uses your new image */
+
+/* Home banner uses your new image (relative path from /css/style.css) */
 .banner-home{
   background-image:
-    /* keeps the title readable on any photo */
     linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("D:\Website Development Tim\images\otherHOME2.jpg");
-  background-position: center;      /* crop nicely */
-  background-size: cover;           /* fill the frame */
-  background-repeat: no-repeat;
+    url("../images/otherHOME2.jpg"),
+    url("../images/otherHOME.jpg"); /* fallback */
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-color:#222; /* safety color while image loads */
 }
+
 /* Utility */
 .actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
 .placeholder{ background:var(--card); }
-
