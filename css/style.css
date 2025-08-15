@@ -130,3 +130,119 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* Utility */
 .actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
 .placeholder{ background:var(--card); }
+/* =========================
+   Hologram Lighthouse (Home)
+   ========================= */
+:root { --holo:#39ff14; } /* neon green; tweak if you like */
+
+.holo-hero{
+  position:relative;
+  width:100%;
+  min-height:clamp(320px, 55vh, 560px);
+  background:#050d06 radial-gradient(ellipse at 50% 70%, rgba(57,255,20,.10), transparent 60%);
+  display:grid; place-items:center;
+  overflow:hidden;
+}
+
+/* subtle CRT scanlines */
+.holo-hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(to bottom, rgba(57,255,20,.06) 0 2px, transparent 2px 4px);
+  mix-blend-mode:overlay;
+  pointer-events:none;
+}
+
+/* sweeping scanner bar */
+.holo-hero::after{
+  content:"";
+  position:absolute; inset:-40% 0;
+  background:
+    linear-gradient(0deg, transparent 0%, rgba(57,255,20,.20) 50%, transparent 100%);
+  background-size:100% 40%;
+  animation:holoSweep 3.8s linear infinite;
+  mix-blend-mode:screen;
+  pointer-events:none;
+}
+
+.holo-svg{ width:min(900px, 92vw); height:auto; }
+
+.wire{
+  stroke:var(--holo);
+  fill:none;
+  stroke-width:2;
+  stroke-dasharray:6 10;
+  animation:holoDash 10s linear infinite, holoPulse 2.2s ease-in-out infinite;
+}
+
+/* outer ring = finer dashes, lower opacity */
+.ring{ stroke-dasharray:2 8; opacity:.55; }
+
+.beam{
+  fill:rgba(57,255,20,.18);
+  stroke:var(--holo);
+  stroke-width:1;
+}
+
+/* sweep beams back-and-forth around the lantern */
+.beams{
+  transform-origin:0 0;             /* because we translated the group to (300,160) */
+  animation:holoSweepBeams 6.5s ease-in-out infinite;
+}
+
+/* light flicker on tower */
+.lighthouse{ animation:holoFlicker 4s steps(60) infinite; }
+
+/* perspective grid floor */
+.grid-floor{
+  position:absolute; inset:auto 0 0 0; height:42%;
+  background:
+    radial-gradient(ellipse at center, rgba(57,255,20,.18), transparent 60%),
+    repeating-linear-gradient(to right, rgba(57,255,20,.25) 0 1px, transparent 1px 80px),
+    repeating-linear-gradient(to top,   rgba(57,255,20,.15) 0 1px, transparent 1px 80px);
+  transform:perspective(700px) rotateX(60deg);
+  transform-origin:bottom;
+  opacity:.8;
+  animation:holoGridPulse 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px rgba(57,255,20,.35));
+}
+
+/* keyframes */
+@keyframes holoDash{
+  to{ stroke-dashoffset:-1200; }
+}
+@keyframes holoPulse{
+  0%,100%{ opacity:.9; }
+  50%   { opacity:1; }
+}
+@keyframes holoSweepBeams{
+  0%  { transform:rotate(-14deg); }
+  50% { transform:rotate( 14deg); }
+  100%{ transform:rotate(-14deg); }
+}
+@keyframes holoGridPulse{
+  0%,100%{ opacity:.65; }
+  50%{ opacity:.9; }
+}
+@keyframes holoSweep{
+  0%{ background-position:0 -100%; }
+  100%{ background-position:0 220%; }
+}
+@keyframes holoFlicker{
+  0%,100%{ filter:none; }
+  10% { filter:brightness(1.05); }
+  20% { filter:brightness(.98); }
+  30% { filter:brightness(1.07); }
+  40% { filter:brightness(.95); }
+  50% { filter:brightness(1.1); }
+  60% { filter:brightness(.97); }
+  70% { filter:brightness(1.06); }
+  80% { filter:brightness(.99); }
+  90% { filter:brightness(1.08); }
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce){
+  .wire,.beams,.grid-floor,.holo-hero::after,.lighthouse{ animation:none!important; }
+}
