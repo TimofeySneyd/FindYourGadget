@@ -134,8 +134,9 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* =========================
    Hologram Lighthouse (Home)
    ========================= */
-:root { --holo:#39ff14; --beam-speed:8s; } /* neon color + rotation speed */
+:root { --holo:#39ff14; } /* neon color */
 
+/* hero container */
 .holo-hero{
   position:relative;
   width:100%;
@@ -149,8 +150,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 .holo-hero::before{
   content:"";
   position:absolute; inset:0;
-  background:
-    repeating-linear-gradient(to bottom, rgba(57,255,20,.06) 0 2px, transparent 2px 4px);
+  background:repeating-linear-gradient(to bottom, rgba(57,255,20,.06) 0 2px, transparent 2px 4px);
   mix-blend-mode:overlay;
   pointer-events:none;
 }
@@ -159,8 +159,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 .holo-hero::after{
   content:"";
   position:absolute; inset:-40% 0;
-  background:
-    linear-gradient(0deg, transparent 0%, rgba(57,255,20,.20) 50%, transparent 100%);
+  background:linear-gradient(0deg, transparent 0%, rgba(57,255,20,.20) 50%, transparent 100%);
   background-size:100% 40%;
   animation:holoSweep 3.8s linear infinite;
   mix-blend-mode:screen;
@@ -180,19 +179,16 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* outer ring = finer dashes, lower opacity */
 .ring{ stroke-dasharray:2 8; opacity:.55; }
 
-/* BEAMS — now rotate 360° around the lantern pivot */
+/* BEAMS — styled only (rotation handled by SVG animateTransform) */
 .beam{
   fill:rgba(57,255,20,.18);
   stroke:var(--holo);
   stroke-width:1;
-  filter: drop-shadow(0 0 6px rgba(57,255,20,.55)); /* subtle glow */
+  filter:drop-shadow(0 0 6px rgba(57,255,20,.55));
 }
-.beams{
-  /* group is nested under <g transform="translate(300 182)"> so (0,0) is the lantern center */
-  transform-origin: 0px 0px;
-  transform-box: fill-box;
-  animation: holoSpin var(--beam-speed) linear infinite;
-}
+
+/* Disable any old CSS beam animation to avoid pivot bugs */
+.beams{ animation:none !important; transform:none !important; }
 
 /* light flicker on tower */
 .lighthouse{ animation:holoFlicker 4s steps(60) infinite; }
@@ -214,10 +210,6 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* keyframes */
 @keyframes holoDash{ to{ stroke-dashoffset:-1200; } }
 @keyframes holoPulse{ 0%,100%{ opacity:.9; } 50%{ opacity:1; } }
-
-/* NEW: full 360° spin */
-@keyframes holoSpin{ to { transform: rotate(360deg); } }
-
 @keyframes holoGridPulse{ 0%,100%{ opacity:.65; } 50%{ opacity:.9; } }
 @keyframes holoSweep{ 0%{ background-position:0 -100%; } 100%{ background-position:0 220%; } }
 @keyframes holoFlicker{
@@ -235,5 +227,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 
 /* Motion accessibility */
 @media (prefers-reduced-motion: reduce){
-  .wire,.beams,.grid-floor,.holo-hero::after,.lighthouse{ animation:none!important; }
+  .wire,.grid-floor,.holo-hero::after,.lighthouse{ animation:none!important; }
+  /* Hide spinning beams entirely when reduced motion is requested */
+  .beams360{ display:none !important; }
 }

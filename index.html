@@ -9,62 +9,13 @@
   <meta name="description" content="Find your gadget — used electronics and custom IoT/Raspberry Pi builds." />
   <meta property="og:site_name" content="Find your gadget" />
 </head>
-<!-- Hologram Lighthouse Hero -->
-<section class="holo-hero" aria-label="Hologram lighthouse simulation">
-  <svg class="holo-svg" viewBox="0 0 600 400" role="img" aria-labelledby="holoTitle holoDesc">
-    <title id="holoTitle">Hologram Lighthouse</title>
-    <desc id="holoDesc">Neon wireframe lighthouse with sweeping beams and scanlines.</desc>
-
-    <defs>
-      <!-- soft glow for neon strokes -->
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="2" result="blur"/>
-        <feMerge>
-          <feMergeNode in="blur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
-    </defs>
-
-    <!-- surrounding ring -->
-    <circle class="wire ring" cx="300" cy="280" r="160" />
-
-    <!-- lighthouse body -->
-    <g class="lighthouse" filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
-      <!-- base hill -->
-      <path class="wire" d="M210 330 Q300 300 390 330" />
-      <!-- tapered tower -->
-      <polygon class="wire" points="280,320 320,320 308,200 292,200" />
-      <!-- gallery + lantern -->
-      <rect class="wire" x="286" y="194" width="28" height="10" />
-      <rect class="wire" x="280" y="170" width="40" height="24" />
-      <!-- roof -->
-      <polygon class="wire" points="300,150 272,170 328,170" />
-      <!-- windows -->
-      <circle class="wire" cx="300" cy="232" r="6" />
-      <circle class="wire" cx="300" cy="262" r="6" />
-      <circle class="wire" cx="300" cy="292" r="6" />
-    </g>
-
-    <!-- sweeping light beams pivot exactly at lantern center (300,182) -->
-<g class="beamPivot" transform="translate(300 182)">
-  <!-- Inner group rotates around (0,0) -->
-  <g class="beams" aria-hidden="true">
-    <!-- two opposite beams (lighthouse style) -->
-    <polygon class="beam" points="0,0 -640,-90 -640,90" />
-    <polygon class="beam" points="0,0 640,-90 640,90" />
-  </g>
-</g>
-  </svg>
-
-  <!-- floor grid (perspective) -->
-  <div class="grid-floor" aria-hidden="true"></div>
-</section>
-
 <body>
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html"><img class="logo-icon" src="images/logoFYG.png" alt="Find Your Gadget logo">Find your gadget</a>
+      <a class="logo" href="index.html">
+        <img class="logo-icon" src="images/logoFYG.png" alt="Find Your Gadget logo">Find your gadget
+      </a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a class="active" href="index.html">Home</a></li>
@@ -78,6 +29,63 @@
   </header>
 
   <main class="site-main">
+    <!-- Hologram Lighthouse Hero -->
+    <section class="holo-hero" aria-label="Hologram lighthouse simulation">
+      <svg class="holo-svg" viewBox="0 0 600 400" role="img" aria-labelledby="holoTitle holoDesc">
+        <title id="holoTitle">Hologram Lighthouse</title>
+        <desc id="holoDesc">Neon wireframe lighthouse with rotating beams and scanlines.</desc>
+
+        <defs>
+          <!-- soft glow for neon strokes -->
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- surrounding ring -->
+        <circle class="wire ring" cx="300" cy="280" r="160" />
+
+        <!-- lighthouse body -->
+        <g class="lighthouse" filter="url(#glow)" stroke-linecap="round" stroke-linejoin="round">
+          <!-- base hill -->
+          <path class="wire" d="M210 330 Q300 300 390 330" />
+          <!-- tapered tower -->
+          <polygon class="wire" points="280,320 320,320 308,200 292,200" />
+          <!-- gallery + lantern -->
+          <rect class="wire" x="286" y="194" width="28" height="10" />
+          <rect class="wire" x="280" y="170" width="40" height="24" />
+          <!-- roof -->
+          <polygon class="wire" points="300,150 272,170 328,170" />
+          <!-- windows -->
+          <circle class="wire" cx="300" cy="232" r="6" />
+          <circle class="wire" cx="300" cy="262" r="6" />
+          <circle class="wire" cx="300" cy="292" r="6" />
+        </g>
+
+        <!-- PERFECT-PIVOT ROTATING BEAMS (lantern center at 300,182) -->
+        <g transform="translate(300 182)">
+          <g class="beams360" aria-hidden="true">
+            <!-- two opposite lighthouse beams -->
+            <polygon class="beam" points="0,0 -640,-90 -640,90" />
+            <polygon class="beam" points="0,0  640,-90  640,90" />
+            <!-- spin the inner group around (0,0) for a true 360° rotation -->
+            <animateTransform attributeName="transform"
+                              type="rotate"
+                              from="0 0 0" to="360 0 0"
+                              dur="7s" repeatCount="indefinite" />
+          </g>
+        </g>
+      </svg>
+
+      <!-- floor grid (perspective) -->
+      <div class="grid-floor" aria-hidden="true"></div>
+    </section>
+
+    <!-- Intro content -->
     <section class="hero">
       <div class="container">
         <h1>Used Electronics & Custom IoT Builds</h1>
@@ -128,6 +136,7 @@
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2025 Find Your Gadget</p>
