@@ -137,20 +137,20 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 #lh-hero{
   position:relative;
   width:100%;
-  /* compact, banner-like height; tweak if you want taller */
-  min-height:clamp(260px, 42vh, 520px);
+  /* more compact banner height */
+  min-height: clamp(150px, 22vh, 260px);
   display:grid; place-items:center;
   overflow:hidden;
   background:#04130a; /* fills edges behind the scene */
 }
 
-/* Fill the hero — removed previous scale that caused side gaps */
+/* Fill the hero; scale whole scene down */
 #lh-hero .lh-scale{
   position:relative;
   width:100%;
   height:100%;
-  transform:none;
-  transform-origin:50% 0;
+  transform: scale(.72);        /* smaller overall */
+  transform-origin: 50% 0;      /* anchor to top center */
 }
 
 /* NIGHT PALETTE (default, no toggle) */
@@ -169,10 +169,10 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   --base-1:#132141;
   --base-2:#06182c;
   --windows:#fc0;
-  --reflex:#39ff1433; /* keep a subtle neon reflection */
+  --reflex:#39ff1433; /* subtle neon reflection */
 }
 
-/* no global body sizing here — keep it scoped */
+/* keep transforms local */
 #lh-hero *{ transform-style:preserve-3d; }
 
 /* sky + sea fill hero width */
@@ -191,19 +191,25 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 
 /* layout box for the lighthouse scene */
 #lh-hero .content{
-  width:60vmin; height:100vmin; position:relative;
+  /* smaller than original (was 60vmin x 100vmin) */
+  width: 44vmin;
+  height: 78vmin;
+  position:relative;
   display:flex; align-items:center; justify-content:center;
 }
 
 /* halo + reflection */
 #lh-hero .sky:before,
 #lh-hero .content:after{
-  content:""; position:absolute; width:19vmin; height:19vmin;
+  content:""; position:absolute;
+  width:14vmin; height:14vmin;
   background:radial-gradient(circle at 50% 60%, var(--sm-2), var(--sm) 100%);
-  border-radius:50%; margin-top:-7.75vmin; clip-path:polygon(0 0,100% 0,100% 71%,0 71%);
+  border-radius:50%;
+  margin-top:-5.6vmin;            /* proportional to size change */
+  clip-path:polygon(0 0,100% 0,100% 71%,0 71%);
   box-shadow:0 .5vmin .5vmin 0 var(--sm) inset;
 }
-#lh-hero .sky:before{ bottom:-6vmin; }
+#lh-hero .sky:before{ bottom:-5vmin; }
 #lh-hero .content:after{
   transform:rotateX(180deg); transform-origin:50% 71%;
   opacity:.25;
