@@ -137,20 +137,20 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 #lh-hero{
   position:relative;
   width:100%;
-  /* more compact banner height */
+  /* compact banner height */
   min-height: clamp(150px, 22vh, 260px);
   display:grid; place-items:center;
   overflow:hidden;
   background:#04130a; /* fills edges behind the scene */
 }
 
-/* Fill the hero; scale whole scene down */
+/* Fill the hero at full width (no transform shrink = no side gutters) */
 #lh-hero .lh-scale{
   position:relative;
   width:100%;
   height:100%;
-  transform: scale(.72);        /* smaller overall */
-  transform-origin: 50% 0;      /* anchor to top center */
+  transform: none;               /* was scale(...) — removing prevents left/right gaps */
+  transform-origin: 50% 0;
 }
 
 /* NIGHT PALETTE (default, no toggle) */
@@ -189,16 +189,16 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
     var(--sea-3);
 }
 
-/* layout box for the lighthouse scene */
+/* layout box for the lighthouse scene (smaller) */
 #lh-hero .content{
-  /* smaller than original (was 60vmin x 100vmin) */
+  /* was 60vmin x 100vmin */
   width: 44vmin;
   height: 78vmin;
   position:relative;
   display:flex; align-items:center; justify-content:center;
 }
 
-/* halo + reflection */
+/* halo + reflection (scaled down) */
 #lh-hero .sky:before,
 #lh-hero .content:after{
   content:""; position:absolute;
@@ -221,8 +221,12 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 
 #lh-hero .content *{ position:absolute; }
 
-/* lighthouse pieces (unchanged from pen, colors adapt via vars) */
-#lh-hero .lighthouse{ width:11vmin; height:30vmin; margin-top:-30vmin; perspective:80vmin; background:transparent; }
+/* lighthouse pieces */
+#lh-hero .lighthouse{
+  width:11vmin; height:30vmin;
+  margin-top:-26vmin;              /* was -30vmin — lowers tower so the top isn't clipped */
+  perspective:80vmin; background:transparent;
+}
 #lh-hero .base{
   --rock-1: var(--base-1) 1.1vmin, #0000 calc(1.1vmin + 3px) 100%;
   --rock-2: var(--base-1) 1vmin,   #0000 calc(1vmin + 1px)   100%;
@@ -283,7 +287,6 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 
 /* reflection lighthouse */
 #lh-hero .lighthouse + .lighthouse{ transform-origin:50% 100%; transform:rotateX(180deg); opacity:.15; }
-/* …reflection tower backgrounds kept as before… */
 
 /* windows */
 #lh-hero .tower:before,
@@ -296,14 +299,17 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 }
 #lh-hero .tower:after{ top:8vmin; }
 
-/* spinning light — keep neon-green beam */
+/* spinning light — extend beams so they reach the full frame during rotation */
 #lh-hero .light{
   width:.75vmin; height:.75vmin; left:5.1vmin; top:1.95vmin; border-radius:50%;
   background:transparent; animation:lh-spin 6s linear infinite; perspective:10vmin;
 }
 #lh-hero .light:before,
 #lh-hero .light:after{
-  content:""; position:absolute; width:30vmin; height:4vmin; margin-top:-1.85vmin; margin-left:.375vmin;
+  content:""; position:absolute;
+  width:140vmin;                 /* was 30vmin — ensures sweep covers full width */
+  height:5vmin;
+  margin-top:-2.5vmin; margin-left:.375vmin;
   background:radial-gradient(circle at 0% 50%, rgba(57,255,20,.6), #0000);
   clip-path:polygon(100% 0, 0 53%, 100% 100%);
 }
@@ -325,6 +331,6 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 #lh-hero .sky span:before, #lh-hero .sky span:after{ /* … */ }
 #lh-hero .sky i{ /* …rocks… */ }
 
-/* hide any unused night label styles from the old version */
+/* no day/night switch in this build */
 #lh-hero label[for=lh-night]{ display:none !important; }
 #lh-hero input{ display:none; } /* keep only the pause checkbox hidden */
