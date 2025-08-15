@@ -130,10 +130,11 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* Utility */
 .actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
 .placeholder{ background:var(--card); }
+
 /* =========================
    Hologram Lighthouse (Home)
    ========================= */
-:root { --holo:#39ff14; } /* neon green; tweak if you like */
+:root { --holo:#39ff14; --beam-speed:8s; } /* neon color + rotation speed */
 
 .holo-hero{
   position:relative;
@@ -179,16 +180,18 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* outer ring = finer dashes, lower opacity */
 .ring{ stroke-dasharray:2 8; opacity:.55; }
 
+/* BEAMS — now rotate 360° around the lantern pivot */
 .beam{
   fill:rgba(57,255,20,.18);
   stroke:var(--holo);
   stroke-width:1;
+  filter: drop-shadow(0 0 6px rgba(57,255,20,.55)); /* subtle glow */
 }
-
-/* sweep beams back-and-forth around the lantern */
 .beams{
-  transform-origin:0 0;             /* because we translated the group to (300,160) */
-  animation:holoSweepBeams 6.5s ease-in-out infinite;
+  /* group is nested under <g transform="translate(300 182)"> so (0,0) is the lantern center */
+  transform-origin: 0px 0px;
+  transform-box: fill-box;
+  animation: holoSpin var(--beam-speed) linear infinite;
 }
 
 /* light flicker on tower */
@@ -209,26 +212,14 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 }
 
 /* keyframes */
-@keyframes holoDash{
-  to{ stroke-dashoffset:-1200; }
-}
-@keyframes holoPulse{
-  0%,100%{ opacity:.9; }
-  50%   { opacity:1; }
-}
-@keyframes holoSweepBeams{
-  0%  { transform:rotate(-14deg); }
-  50% { transform:rotate( 14deg); }
-  100%{ transform:rotate(-14deg); }
-}
-@keyframes holoGridPulse{
-  0%,100%{ opacity:.65; }
-  50%{ opacity:.9; }
-}
-@keyframes holoSweep{
-  0%{ background-position:0 -100%; }
-  100%{ background-position:0 220%; }
-}
+@keyframes holoDash{ to{ stroke-dashoffset:-1200; } }
+@keyframes holoPulse{ 0%,100%{ opacity:.9; } 50%{ opacity:1; } }
+
+/* NEW: full 360° spin */
+@keyframes holoSpin{ to { transform: rotate(360deg); } }
+
+@keyframes holoGridPulse{ 0%,100%{ opacity:.65; } 50%{ opacity:.9; } }
+@keyframes holoSweep{ 0%{ background-position:0 -100%; } 100%{ background-position:0 220%; } }
 @keyframes holoFlicker{
   0%,100%{ filter:none; }
   10% { filter:brightness(1.05); }

@@ -46,11 +46,15 @@
       <circle class="wire" cx="300" cy="292" r="6" />
     </g>
 
-    <!-- sweeping light beams pivot at the lantern (translated origin) -->
-    <g class="beams" filter="url(#glow)" transform="translate(300 160)">
-      <polygon class="beam" points="0,0 -220,-35 -560,0" />
-      <polygon class="beam" points="0,0 220,-35 560,0" />
-    </g>
+    <!-- sweeping light beams pivot exactly at lantern center (300,182) -->
+<g class="beamPivot" transform="translate(300 182)">
+  <!-- Inner group rotates around (0,0) -->
+  <g class="beams" aria-hidden="true">
+    <!-- two opposite beams (lighthouse style) -->
+    <polygon class="beam" points="0,0 -640,-90 -640,90" />
+    <polygon class="beam" points="0,0 640,-90 640,90" />
+  </g>
+</g>
   </svg>
 
   <!-- floor grid (perspective) -->
