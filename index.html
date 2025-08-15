@@ -31,40 +31,34 @@
   <main class="site-main">
     <!-- Hologram Lighthouse Hero -->
     <section class="holo-hero" aria-label="Hologram lighthouse simulation">
-      <svg class="holo-svg" viewBox="0 0 600 400" role="img" aria-labelledby="holoTitle holoDesc">
+      <svg class="holo-svg" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid meet"
+           role="img" aria-labelledby="holoTitle holoDesc">
         <title id="holoTitle">Hologram Lighthouse</title>
-        <desc id="holoDesc">Neon wireframe lighthouse with 3D radar-like sweeping beams, scanlines and grid.</desc>
+        <desc id="holoDesc">Neon wireframe lighthouse with horizontal 3D-like sweeping beams, scanlines and grid.</desc>
 
-        <defs>
-          <!-- (Kept here if you want to re-enable later; not used by default) -->
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="1.2" result="blur"/>
-            <feMerge>
-              <feMergeNode in="blur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-
-        <!-- REAR SWEEP (behind tower) -->
+        <!-- REAR SWEEP (behind tower) on a tilted plane -->
         <g transform="translate(300 182)">
-          <g class="rearSweep" aria-hidden="true">
-            <polygon class="beam rear" points="0,0  560,-70 560,70" />
-            <polygon class="beam rear" points="0,0 -560,-70 -560,70" />
-            <animateTransform attributeName="transform" type="rotate"
-                              from="0 0 0" to="360 0 0"
-                              dur="8s" repeatCount="indefinite" />
-            <!-- visible only on back half -->
-            <animate attributeName="opacity" values="0;0;1;1;0"
-                     keyTimes="0;0.499;0.5;0.999;1"
-                     dur="8s" repeatCount="indefinite" />
+          <!-- plane tilt creates horizontal/orbital feel -->
+          <g class="sweepPlane" transform="skewX(-14) scale(1,0.55)">
+            <g class="rearSweep" aria-hidden="true">
+              <!-- very long wedges so tips always hit screen edges -->
+              <polygon class="beam rear" points="0,0  2000,-150 2000,150" />
+              <polygon class="beam rear" points="0,0 -2000,-150 -2000,150" />
+              <animateTransform attributeName="transform" type="rotate"
+                                from="0 0 0" to="360 0 0"
+                                dur="9s" repeatCount="indefinite" />
+              <!-- only visible on back half -->
+              <animate attributeName="opacity" values="0;0;1;1;0"
+                       keyTimes="0;0.499;0.5;0.999;1"
+                       dur="9s" repeatCount="indefinite" />
+            </g>
           </g>
         </g>
 
-        <!-- Ring (now static for perf) -->
+        <!-- Ring (drawn above the rear sweep) -->
         <circle class="wire ring" cx="300" cy="280" r="160" />
 
-        <!-- LIGHTHOUSE BODY (no blur filter for perf) -->
+        <!-- LIGHTHOUSE BODY -->
         <g class="lighthouse" stroke-linecap="round" stroke-linejoin="round">
           <path class="wire" d="M210 330 Q300 300 390 330" />
           <polygon class="wire" points="280,320 320,320 308,200 292,200" />
@@ -76,18 +70,20 @@
           <circle class="wire" cx="300" cy="292" r="6" />
         </g>
 
-        <!-- FRONT SWEEP (in front of tower) -->
+        <!-- FRONT SWEEP (in front of tower) on the same tilted plane -->
         <g transform="translate(300 182)">
-          <g class="frontSweep" aria-hidden="true">
-            <polygon class="beam front" points="0,0  640,-110 640,110" />
-            <polygon class="beam front" points="0,0 -640,-110 -640,110" />
-            <animateTransform attributeName="transform" type="rotate"
-                              from="0 0 0" to="360 0 0"
-                              dur="8s" repeatCount="indefinite" />
-            <!-- visible only on front half -->
-            <animate attributeName="opacity" values="1;1;0;0;1"
-                     keyTimes="0;0.499;0.5;0.999;1"
-                     dur="8s" repeatCount="indefinite" />
+          <g class="sweepPlane" transform="skewX(-14) scale(1,0.55)">
+            <g class="frontSweep" aria-hidden="true">
+              <polygon class="beam front" points="0,0  2200,-260 2200,260" />
+              <polygon class="beam front" points="0,0 -2200,-260 -2200,260" />
+              <animateTransform attributeName="transform" type="rotate"
+                                from="0 0 0" to="360 0 0"
+                                dur="9s" repeatCount="indefinite" />
+              <!-- only visible on front half -->
+              <animate attributeName="opacity" values="1;1;0;0;1"
+                       keyTimes="0;0.499;0.5;0.999;1"
+                       dur="9s" repeatCount="indefinite" />
+            </g>
           </g>
         </g>
 
@@ -97,50 +93,49 @@
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.075;0.083;0.10;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
           <g transform="rotate(90) translate(145 0)">
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.24;0.25;0.27;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
           <g transform="rotate(140) translate(145 0)">
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.37;0.389;0.41;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
           <g transform="rotate(210) translate(145 0)">
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.57;0.583;0.60;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
           <g transform="rotate(260) translate(145 0)">
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.71;0.722;0.74;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
           <g transform="rotate(320) translate(145 0)">
             <circle class="blip" r="3">
               <animate attributeName="opacity" values="0;0;1;0;0"
                        keyTimes="0;0.875;0.889;0.905;1"
-                       dur="8s" repeatCount="indefinite"/>
+                       dur="9s" repeatCount="indefinite"/>
             </circle>
           </g>
         </g>
       </svg>
 
-      <!-- floor grid (perspective) -->
+      <!-- floor grid (perspective) + scanbar -->
       <div class="grid-floor" aria-hidden="true"></div>
-      <!-- scanbar layer for GPU-friendly transform (replaces background-position anim) -->
       <div class="scanbar" aria-hidden="true"></div>
     </section>
 
@@ -210,7 +205,7 @@
     </div>
   </footer>
 
-  <!-- Auto-throttle: pause SVG animations on tab blur / when hero is offscreen -->
+  <!-- Pause logic (tab blur/offscreen) + P to toggle -->
   <script>
     (function () {
       const svg = document.querySelector('.holo-svg');
@@ -222,24 +217,20 @@
         hero.classList.toggle('paused', !!paused);
       }
 
-      // Pause when tab hidden or window loses focus
       const onVis = () => setPaused(document.hidden || !document.hasFocus());
       document.addEventListener('visibilitychange', onVis);
       window.addEventListener('blur', onVis);
       window.addEventListener('focus', onVis);
 
-      // Pause when hero scrolled offscreen
       const io = new IntersectionObserver((e) => {
         const onScreen = e[0] && e[0].isIntersecting;
         setPaused(!onScreen || document.hidden || !document.hasFocus());
       }, { threshold: 0.1 });
       io.observe(hero);
 
-      // Keyboard toggle: press "p" to pause/resume manually
       window.addEventListener('keydown', (ev) => {
         if (ev.key.toLowerCase() === 'p') {
-          hero.classList.toggle('paused');
-          const paused = hero.classList.contains('paused');
+          const paused = !hero.classList.contains('paused');
           setPaused(paused);
         }
       });

@@ -136,7 +136,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
    ========================= */
 :root { --holo:#39ff14; } /* neon color */
 
-/* Isolate painting and let the compositor help */
+/* Full-bleed SVG so beams can reach the edges */
 .holo-hero{
   position:relative;
   width:100%;
@@ -146,62 +146,46 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   overflow:hidden;
   contain: paint;
 }
+.holo-svg{ width:100%; height:auto; display:block; }
 
+/* scanlines */
 .holo-hero::before{
-  content:"";
-  position:absolute; inset:0;
+  content:""; position:absolute; inset:0;
   background:repeating-linear-gradient(to bottom, rgba(57,255,20,.06) 0 2px, transparent 2px 4px);
-  mix-blend-mode:overlay;
-  pointer-events:none;
+  mix-blend-mode:overlay; pointer-events:none;
 }
 
-/* GPU-friendly scanbar using transform (not background-position) */
+/* GPU-friendly scanbar */
 .scanbar{
   position:absolute; left:0; right:0; top:-40%;
   height:40%;
   background:linear-gradient(0deg, transparent 0%, rgba(57,255,20,.20) 50%, transparent 100%);
-  mix-blend-mode:screen;
-  pointer-events:none;
+  mix-blend-mode:screen; pointer-events:none;
   transform:translateY(0);
   animation:scanMove 3.8s linear infinite;
   will-change: transform;
 }
 
-.holo-svg{ width:min(900px, 92vw); height:auto; }
-
 /* Wireframe */
 .wire{
-  stroke:var(--holo);
-  fill:none;
-  stroke-width:2;
-  stroke-dasharray:6 10;
+  stroke:var(--holo); fill:none; stroke-width:2;
+  stroke-dasharray:6 10; vector-effect:non-scaling-stroke;
   animation:holoDash 10s linear infinite, holoPulse 2.2s ease-in-out infinite;
 }
+.ring{ stroke-dasharray:2 8; opacity:.55; animation:none!important; }
 
-/* The ring is long; keep it static for perf */
-.ring{ stroke-dasharray:2 8; opacity:.55; animation:none !important; }
-
-/* Beams: style (no CSS rotation; SMIL handles it) */
 .beam{
-  stroke:var(--holo);
-  stroke-width:1.1;
-  /* lighter glow than before to reduce overdraw */
-  filter: drop-shadow(0 0 5px rgba(57,255,20,.45));
+  stroke:var(--holo); stroke-width:1.1; vector-effect:non-scaling-stroke;
+  filter:drop-shadow(0 0 5px rgba(57,255,20,.45));
 }
 .beam.front{ fill:rgba(57,255,20,.22); }
 .beam.rear { fill:rgba(57,255,20,.10); }
 
-/* Lighthouse subtle flicker (cheap) */
+/* Blips + lighthouse flicker */
+.blip{ fill:var(--holo); opacity:0; filter:drop-shadow(0 0 4px rgba(57,255,20,.85)); }
 .lighthouse{ animation:holoFlicker 4s steps(60) infinite; }
 
-/* Blips */
-.blip{
-  fill:var(--holo);
-  opacity:0;
-  filter:drop-shadow(0 0 4px rgba(57,255,20,.85));
-}
-
-/* Floor grid (drop shadow removed to reduce overdraw) */
+/* Floor grid */
 .grid-floor{
   position:absolute; inset:auto 0 0 0; height:42%;
   background:
@@ -210,12 +194,11 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
     repeating-linear-gradient(to top,   rgba(57,255,20,.15) 0 1px, transparent 1px 80px);
   transform:perspective(700px) rotateX(60deg);
   transform-origin:bottom;
-  opacity:.8;
-  animation:holoGridPulse 4s ease-in-out infinite;
+  opacity:.8; animation:holoGridPulse 4s ease-in-out infinite;
 }
 
-/* "Paused" visual hint: dim hero when auto-paused */
-.holo-hero.paused { filter:saturate(.8) brightness(.9); }
+/* Pause hint */
+.holo-hero.paused{ filter:saturate(.8) brightness(.9); }
 
 /* Keyframes */
 @keyframes holoDash{ to{ stroke-dashoffset:-1200; } }
@@ -224,11 +207,10 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 @keyframes scanMove{ to{ transform:translateY(220%); } }
 @keyframes holoFlicker{
   0%,100%{ filter:none; }
-  10% { filter:brightness(1.04); }
-  20% { filter:brightness(.99); }
-  40% { filter:brightness(1.06); }
-  60% { filter:brightness(.98); }
-  80% { filter:brightness(1.05); }
+  12% { filter:brightness(1.04); }
+  38% { filter:brightness(1.06); }
+  63% { filter:brightness(.98); }
+  85% { filter:brightness(1.05); }
 }
 
 /* Reduced motion */
