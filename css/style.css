@@ -136,20 +136,18 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
    ========================= */
 :root { --holo:#39ff14; } /* neon color */
 
-/* Full-bleed SVG so beams can reach the edges */
+/* Compact hero but allow full-width SVG so beams can hit the edges */
 .holo-hero{
   position:relative;
   width:100%;
-  /* COMPACT HEIGHT (~2x shorter than before) */
-  min-height:clamp(200px, 28vh, 340px);
+  min-height:clamp(200px, 28vh, 340px);          /* shorter */
   background:#050d06 radial-gradient(ellipse at 50% 70%, rgba(57,255,20,.10), transparent 60%);
   display:grid; place-items:center;
   overflow:hidden;
   contain: paint;
 }
 .holo-svg{
-  /* Scaled down & centered for symmetry */
-  width:min(800px, 68vw);
+  width:100%;                                      /* <— key change */
   height:auto;
   margin-inline:auto;
   display:block;
@@ -162,7 +160,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   mix-blend-mode:overlay; pointer-events:none;
 }
 
-/* GPU-friendly scanbar (shorter to match compact hero) */
+/* GPU-friendly scanbar, tuned for compact hero */
 .scanbar{
   position:absolute; left:0; right:0; top:-30%;
   height:30%;
@@ -230,5 +228,5 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* Phone tweaks */
 @media (max-width:600px){
   .holo-hero{ min-height:clamp(220px, 40vh, 360px); }
-  .holo-svg{ width:92vw; }
+  .holo-svg{ width:100%; }
 }
