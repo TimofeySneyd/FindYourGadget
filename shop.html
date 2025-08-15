@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop | Find your gadget</title>
+  <title>Shop | Find Your Gadget</title>
+  <link rel="icon" href="images/logoFYG.png" type="image/png" />
   <link rel="stylesheet" href="css/style.css" />
   <meta name="description" content="Browse used electronics and parts. Small curated stock, rotating frequently." />
   <meta property="og:site_name" content="Find your gadget" />
 </head>
 <body>
-  <!-- Shared Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Find your gadget</a>
+      <a class="logo" href="index.html"><img class="logo-icon" src="images/logoFYG.png" alt="Find Your Gadget logo">Find your gadget</a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -25,11 +25,14 @@
     </div>
   </header>
 
-  <!-- Page Content -->
+  <!-- Full-width banner -->
+  <section class="page-hero banner-shop" aria-label="Circuit board background for Shop">
+    <div class="banner-title">Shop</div>
+  </section>
+
   <main class="site-main">
     <section class="section">
       <div class="container">
-        <h1>Shop</h1>
         <p class="subtle">Small batch, rotating inventory. All items include honest condition notes.</p>
 
         <!-- Filters -->
@@ -66,7 +69,6 @@
         <!-- Product Grid (rendered by JS) -->
         <div id="productsGrid" class="grid three products" aria-live="polite"></div>
 
-        <!-- Store Note -->
         <div class="store-note">
           <p><strong>Note:</strong> Stock is updated manually. If an item is gone, I’ll suggest a similar option or add you to a notify list.</p>
         </div>
@@ -74,10 +76,9 @@
     </section>
   </main>
 
-  <!-- Shared Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2025 Find your gadget</p>
+      <p>&copy; 2025 Find Your Gadget</p>
       <nav aria-label="Footer navigation">
         <ul class="footer-nav">
           <li><a class="active" href="shop.html">Shop</a></li>

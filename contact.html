@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Find Your Gadget</title>
+  <title>Contact | Find your gadget</title>
+  <link rel="icon" href="images/logoFYG.png" type="image/png" />
   <link rel="stylesheet" href="css/style.css" />
   <meta name="description" content="Contact form for enquiries, orders, and custom build requests." />
-  <meta property="og:site_name" content="Find Your Gadget" />
+  <meta property="og:site_name" content="Find your gadget" />
 </head>
 <body>
-  <!-- Shared Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Find Your Gadget</a>
+      <a class="logo" href="index.html"><img class="logo-icon" src="images/logoFYG.png" alt="Find Your Gadget logo">Find your gadget</a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -25,33 +25,22 @@
     </div>
   </header>
 
-  <!-- Page Content -->
   <main class="site-main">
     <section class="section">
       <div class="container">
         <h1>Contact</h1>
         <p class="subtle">Questions about an item or a custom build idea? Send a message below.</p>
 
-        <!-- Simple contact form (static site) -->
         <form id="contactForm" class="filters" action="#" method="get">
           <div class="filters-row">
-            <label>
-              <span class="label">Your Name</span>
-              <input id="nameInput" type="text" name="name" placeholder="Jane Doe" required />
-            </label>
-            <label>
-              <span class="label">Email</span>
-              <input id="emailInput" type="email" name="email" placeholder="you@example.com" required />
-            </label>
-            <label>
-              <span class="label">Subject</span>
-              <input id="subjectInput" type="text" name="subject" placeholder="Order enquiry / Build request" />
-            </label>
+            <label><span class="label">Your Name</span><input id="nameInput" type="text" name="name" placeholder="Jane Doe" required /></label>
+            <label><span class="label">Email</span><input id="emailInput" type="email" name="email" placeholder="you@example.com" required /></label>
+            <label><span class="label">Subject</span><input id="subjectInput" type="text" name="subject" placeholder="Order enquiry / Build request" /></label>
           </div>
 
           <label style="display:block; margin-top:.8rem;">
             <span class="label">Message</span>
-            <textarea id="messageInput" name="message" rows="8" placeholder="Tell me what you’re looking for…" required style="width:100%; padding:.55rem .6rem; border:1px solid var(--line); border-radius:.45rem; background:var(--bg);"></textarea>
+            <textarea id="messageInput" name="message" rows="8" placeholder="Tell me what you’re looking for…" required></textarea>
           </label>
 
           <div class="actions" style="margin-top:.9rem;">
@@ -67,10 +56,9 @@
     </section>
   </main>
 
-  <!-- Shared Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2025 Find Your Gadget</p>
+      <p>&copy; 2025 Find your gadget</p>
       <nav aria-label="Footer navigation">
         <ul class="footer-nav">
           <li><a href="shop.html">Shop</a></li>

@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Custom Builds | Find Your Gadget</title>
+  <link rel="icon" href="images/logoFYG.png" type="image/png" />
   <link rel="stylesheet" href="css/style.css" />
   <meta name="description" content="Showcase of custom IoT devices, cyberdecks, and Raspberry Pi projects." />
-  <meta property="og:site_name" content="Find Your Gadget" />
+  <meta property="og:site_name" content="Find your gadget" />
 </head>
 <body>
-  <!-- Shared Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Find Your Gadget</a>
+      <a class="logo" href="index.html"><img class="logo-icon" src="images/logoFYG.png" alt="Find Your Gadget logo">Find your gadget</a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -25,25 +25,17 @@
     </div>
   </header>
 
-  <!-- Page Content -->
-  <main class="site-main">
-    <section class="hero">
-      <div class="container">
-        <h1>Custom IoT & Raspberry Pi Builds</h1>
-        <p>Hand-assembled devices with clear documentation and parts lists. Limited runs; request-based builds welcome.</p>
-        <div class="actions">
-          <a class="btn" href="contact.html">Request a Build</a>
-          <a class="btn btn-outline" href="#gallery">See Gallery</a>
-        </div>
-      </div>
-    </section>
+  <!-- Full-width banner -->
+  <section class="page-hero banner-builds" aria-label="Circuit board background for Custom Builds">
+    <div class="banner-title">Custom Builds</div>
+  </section>
 
+  <main class="site-main">
     <section class="section" id="gallery">
       <div class="container">
         <h2 class="section-title">Featured Builds</h2>
 
         <div class="grid three">
-          <!-- Build Card 1 -->
           <article class="card">
             <div class="thumb placeholder" aria-hidden="true">Image</div>
             <h3>Portable Pi Cyberdeck</h3>
@@ -55,7 +47,6 @@
             </div>
           </article>
 
-          <!-- Build Card 2 -->
           <article class="card" id="iot">
             <div class="thumb placeholder" aria-hidden="true">Image</div>
             <h3>IoT Sensor Gateway</h3>
@@ -67,7 +58,6 @@
             </div>
           </article>
 
-          <!-- Build Card 3 -->
           <article class="card" id="tools">
             <div class="thumb placeholder" aria-hidden="true">Image</div>
             <h3>Pi Network Toolkit</h3>
@@ -80,7 +70,6 @@
           </article>
         </div>
 
-        <!-- BOM Notes -->
         <div class="section alt" id="bom-cyberdeck">
           <div class="container">
             <h3>Bill of Materials — Portable Pi Cyberdeck</h3>
@@ -125,7 +114,6 @@
     </section>
   </main>
 
-  <!-- Shared Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <p>&copy; 2025 Find Your Gadget</p>
