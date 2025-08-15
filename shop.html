@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop | Find Your Gadget</title>
+  <title>Shop | Find your gadget</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="description" content="Browse used electronics and parts. Small curated stock, rotating frequently." />
+  <meta property="og:site_name" content="Find your gadget" />
 </head>
 <body>
   <!-- Shared Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Find Your Gadget</a>
+      <a class="logo" href="index.html">Find your gadget</a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -31,16 +32,16 @@
         <h1>Shop</h1>
         <p class="subtle">Small batch, rotating inventory. All items include honest condition notes.</p>
 
-        <!-- Optional simple filters (structure-first; JS not required yet) -->
-        <form class="filters" aria-label="Filters">
+        <!-- Filters -->
+        <form class="filters" aria-label="Filters" onsubmit="return false;">
           <div class="filters-row">
             <label>
               <span class="label">Search</span>
-              <input type="search" placeholder="e.g. Raspberry Pi, GPU, ThinkPad" />
+              <input id="searchInput" type="search" placeholder="e.g. Raspberry Pi, GPU, ThinkPad" />
             </label>
             <label>
               <span class="label">Category</span>
-              <select>
+              <select id="categorySelect">
                 <option value="">All</option>
                 <option value="laptops">Laptops</option>
                 <option value="components">Components</option>
@@ -50,7 +51,7 @@
             </label>
             <label>
               <span class="label">Condition</span>
-              <select>
+              <select id="conditionSelect">
                 <option value="">Any</option>
                 <option value="like-new">Like New</option>
                 <option value="good">Good</option>
@@ -60,50 +61,8 @@
           </div>
         </form>
 
-        <!-- Product Grid -->
-        <div class="grid three products">
-          <!-- Example Product Card -->
-          <article class="card product" id="laptops">
-            <div class="thumb placeholder" aria-hidden="true">Image</div>
-            <div class="card-body">
-              <h2 class="product-title">ThinkPad X270</h2>
-              <p class="product-meta">i5 • 8GB RAM • 256GB SSD</p>
-              <p class="product-desc">Solid travel laptop. Battery in good health. Minor scuffs on lid.</p>
-              <div class="product-bottom">
-                <span class="price">€220</span>
-                <a class="btn btn-small" href="contact.html">Enquire</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card product" id="components">
-            <div class="thumb placeholder" aria-hidden="true">Image</div>
-            <div class="card-body">
-              <h2 class="product-title">GTX 1060 6GB</h2>
-              <p class="product-meta">Refurbished • Cleaned & repasted</p>
-              <p class="product-desc">Great for light gaming or ML tinkering. Runs cool after service.</p>
-              <div class="product-bottom">
-                <span class="price">€90</span>
-                <a class="btn btn-small" href="contact.html">Enquire</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card product" id="sbc">
-            <div class="thumb placeholder" aria-hidden="true">Image</div>
-            <div class="card-body">
-              <h2 class="product-title">Raspberry Pi 4 (4GB)</h2>
-              <p class="product-meta">With case & heatsinks</p>
-              <p class="product-desc">Ready for your next IoT gateway or mini-lab setup.</p>
-              <div class="product-bottom">
-                <span class="price">€70</span>
-                <a class="btn btn-small" href="contact.html">Enquire</a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Duplicate & edit cards as you add stock -->
-        </div>
+        <!-- Product Grid (rendered by JS) -->
+        <div id="productsGrid" class="grid three products" aria-live="polite"></div>
 
         <!-- Store Note -->
         <div class="store-note">
@@ -116,7 +75,7 @@
   <!-- Shared Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2025 My Electronics Shop</p>
+      <p>&copy; 2025 Find your gadget</p>
       <nav aria-label="Footer navigation">
         <ul class="footer-nav">
           <li><a class="active" href="shop.html">Shop</a></li>
@@ -127,5 +86,7 @@
       </nav>
     </div>
   </footer>
+
+  <script src="js/shop.js" defer></script>
 </body>
 </html>

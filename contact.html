@@ -3,15 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact | Find Your Gadget</title>
+  <title>Contact | Find your gadget</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="description" content="Contact form for enquiries, orders, and custom build requests." />
+  <meta property="og:site_name" content="Find your gadget" />
 </head>
 <body>
   <!-- Shared Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="logo" href="index.html">Find Your Gadget</a>
+      <a class="logo" href="index.html">Find your gadget</a>
       <nav class="nav" aria-label="Main navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -31,31 +32,31 @@
         <h1>Contact</h1>
         <p class="subtle">Questions about an item or a custom build idea? Send a message below.</p>
 
-        <!-- Simple contact form (structure-first; wire up action later) -->
-        <form class="filters" action="#" method="post">
+        <!-- Simple contact form (static site) -->
+        <form id="contactForm" class="filters" action="#" method="get">
           <div class="filters-row">
             <label>
               <span class="label">Your Name</span>
-              <input type="text" name="name" placeholder="Jane Doe" required />
+              <input id="nameInput" type="text" name="name" placeholder="Jane Doe" required />
             </label>
             <label>
               <span class="label">Email</span>
-              <input type="email" name="email" placeholder="you@example.com" required />
+              <input id="emailInput" type="email" name="email" placeholder="you@example.com" required />
             </label>
             <label>
               <span class="label">Subject</span>
-              <input type="text" name="subject" placeholder="Order enquiry / Build request" />
+              <input id="subjectInput" type="text" name="subject" placeholder="Order enquiry / Build request" />
             </label>
           </div>
 
           <label style="display:block; margin-top:.8rem;">
             <span class="label">Message</span>
-            <textarea name="message" rows="8" placeholder="Tell me what you’re looking for…" required style="width:100%; padding:.55rem .6rem; border:1px solid var(--line); border-radius:.45rem; background:var(--bg);"></textarea>
+            <textarea id="messageInput" name="message" rows="8" placeholder="Tell me what you’re looking for…" required style="width:100%; padding:.55rem .6rem; border:1px solid var(--line); border-radius:.45rem; background:var(--bg);"></textarea>
           </label>
 
           <div class="actions" style="margin-top:.9rem;">
-            <button class="btn" type="submit">Send Message</button>
-            <a class="btn btn-outline" href="mailto:hello@example.com">Email instead</a>
+            <button class="btn" type="submit">Preview Email</button>
+            <a id="mailtoBtn" class="btn btn-outline" href="mailto:hello@example.com">Email instead</a>
           </div>
         </form>
 
@@ -69,7 +70,7 @@
   <!-- Shared Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; 2025 My Electronics Shop</p>
+      <p>&copy; 2025 Find your gadget</p>
       <nav aria-label="Footer navigation">
         <ul class="footer-nav">
           <li><a href="shop.html">Shop</a></li>
@@ -80,5 +81,7 @@
       </nav>
     </div>
   </footer>
+
+  <script src="js/contact.js" defer></script>
 </body>
 </html>
