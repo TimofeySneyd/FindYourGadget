@@ -29,28 +29,10 @@
   </header>
 
   <main class="site-main">
-   <!-- Lighthouse Hero (night-only, full width) -->
-<input type="checkbox" name="light" id="light">
-<input type="checkbox" name="night" id="night">
-<div class="sky">
-	<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><i></i><i></i><i></i><i></i><i></i><i></i>
-</div>
-<div class="sea"><span></span></div>
-<div class="content">
-	<div class="lighthouse">
-		<div class="base"></div>
-		<div class="tower"></div>
-		<div class="top"></div>
-		<div class="roof"></div>
-		<div class="light"></div>
-	</div>
-	<div class="lighthouse">
-		<div class="base"></div>
-		<div class="tower"></div>
-	</div>
-	<label for="light"></label>
-</div>
-<label for="night"></label>
+    <!-- Simple static banner (no animation) -->
+    <section class="page-hero banner-home" aria-label="Find Your Gadget banner">
+      <h1 class="banner-title">Find Your Gadget</h1>
+    </section>
 
     <!-- Intro content -->
     <section class="hero">
@@ -66,7 +48,7 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">What you'll find</h2>
+        <h2 class="section-title">What you’ll find</h2>
         <div class="grid three">
           <article class="card">
             <h3>Second-Hand Laptops</h3>
@@ -117,37 +99,5 @@
       </nav>
     </div>
   </footer>
-
-  <!-- Pause logic (tab blur/offscreen) + P to toggle -->
-  <script>
-    (function () {
-      const svg = document.querySelector('.holo-svg');
-      const hero = document.querySelector('.holo-hero');
-      if (!svg || !svg.pauseAnimations) return;
-
-      function setPaused(paused) {
-        try { paused ? svg.pauseAnimations() : svg.unpauseAnimations(); } catch {}
-        hero.classList.toggle('paused', !!paused);
-      }
-
-      const onVis = () => setPaused(document.hidden || !document.hasFocus());
-      document.addEventListener('visibilitychange', onVis);
-      window.addEventListener('blur', onVis);
-      window.addEventListener('focus', onVis);
-
-      const io = new IntersectionObserver((e) => {
-        const onScreen = e[0] && e[0].isIntersecting;
-        setPaused(!onScreen || document.hidden || !document.hasFocus());
-      }, { threshold: 0.1 });
-      io.observe(hero);
-
-      window.addEventListener('keydown', (ev) => {
-        if (ev.key.toLowerCase() === 'p') {
-          const paused = !hero.classList.contains('paused');
-          setPaused(paused);
-        }
-      });
-    })();
-  </script>
 </body>
 </html>
