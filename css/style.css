@@ -224,7 +224,7 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
 /* lighthouse pieces */
 #lh-hero .lighthouse{
   width:11vmin; height:30vmin;
-  margin-top:-26vmin;              /* was -30vmin — lowers tower so the top isn't clipped */
+  margin-top:-25vmin;              /* was -30vmin — lowers tower so the top isn't clipped */
   perspective:80vmin; background:transparent;
 }
 #lh-hero .base{
@@ -282,8 +282,43 @@ input[type="search"],input[type="text"],input[type="email"],select,textarea{
   clip-path:polygon(25% 0, 75% 0, 100% 100%, 0 100%);
 }
 
-#lh-hero .top{ /* …unchanged clip-path and backgrounds… */ }
-#lh-hero .roof{ border:.65vmin solid transparent; border-bottom-color:var(--red); left:4.9vmin; top:-.2vmin; }
+/* full style for the cap/top (restored from the original pen) */
+#lh-hero .top{
+  z-index: 2;
+  background:
+    linear-gradient(90deg, var(--shine) 0 0.75vmin, #0000 0 100%),
+    linear-gradient(90deg, var(--shine) 0 0.75vmin, #0000 0 100%),
+    linear-gradient(90deg, var(--shine) 0 0.7vmin,  #0000 0 100%),
+    linear-gradient(90deg, var(--shine) 0 0.7vmin,  #0000 0 100%),
+    conic-gradient(from -1deg at 8% 89%, #0000 0 35%, var(--shine) 36% 100%),
+    conic-gradient(from 0deg  at 92% 89%, var(--shine) 0 64%, #0000 65% 100%),
+    radial-gradient(circle at 50% 1.55vmin, #fff, #fc0 0.25vmin, var(--red-2) calc(0.25vmin + 1px) 0.35vmin, #0000 calc(0.35vmin + 1px) 100%),
+    radial-gradient(circle at 50% 187%, var(--white) 0 7vmin, #0000 calc(7vmin + 1px) 7.5vmin, var(--white) calc(7.5vmin + 1px) 8.35vmin, #0000 calc(8.35vmin + 1px) 9.5vmin, var(--white) calc(9.5vmin + 1px) 100%),
+    linear-gradient(-95deg, #0000 0 1.4vmin, var(--shine) calc(1.4vmin + 1px) 1.65vmin, var(--red) calc(1.65vmin + 1px) 2.85vmin, #0000 0 100%),
+    linear-gradient( 95deg, #0000 0 1.4vmin, var(--shine) calc(1.4vmin + 1px) 1.65vmin, var(--red) calc(1.65vmin + 1px) 2.85vmin, #0000 0 100%);
+  width: 4.65vmin;
+  height: 5.5vmin;
+  left: 3.15vmin;
+  top: 0.75vmin;
+  border-radius: 0.5vmin;
+  clip-path: polygon(0% 96%, 0% 70%, 22% 63%, 24% 53%, 7% 56%, 8% 41%, 25% 38%, 27% 17%, 15% 18%, 16% 10%, 22% 8%, 35% 6%, 54% 5%, 74% 8%, 73% 8%, 82% 10%, 83% 18%, 72% 17%, 75% 37%, 88% 41%, 89% 56%, 77% 54%, 78% 62%, 100% 70%, 100% 96%, 85% 100%, 15% 100%);
+  background-repeat: no-repeat;
+  background-size:
+    1vmin 1.1vmin, 1vmin 1.1vmin, 1vmin 1.15vmin, 0.45vmin 1.15vmin,
+    100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-position:
+    3.45vmin 0.25vmin, 0.35vmin 0.25vmin, 0vmin 2.1vmin, 3.75vmin 2.1vmin,
+    0 0, 0 0, 0 0, 0 0, 0 0, 0 0;
+}
+
+/* roof line above the cap */
+#lh-hero .roof{
+  z-index: 3;
+  border: 0.65vmin solid transparent;
+  border-bottom-color: var(--red);
+  left: 4.9vmin;
+  top: -0.2vmin;
+}
 
 /* reflection lighthouse */
 #lh-hero .lighthouse + .lighthouse{ transform-origin:50% 100%; transform:rotateX(180deg); opacity:.15; }
